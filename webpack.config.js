@@ -11,13 +11,34 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /.s?css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'assets/images',
+        },
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'assets/fonts',
+        },
       },
     ],
   },
@@ -28,6 +49,6 @@ module.exports = {
   devServer: {
     open: true,
     port: 9000,
-    stats: 'errors-only',
   },
+  watch: true,
 };

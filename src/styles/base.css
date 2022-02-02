@@ -1,3 +1,9 @@
-body{
-    background-color: rgb(167, 189, 88);
+@font-face {
+  font-family: 'Comforter';
+  src: url('./Comforter-Regular.ttf') format('truetype');
+}
+
+body {
+  background-color: rgb(167, 189, 88);
+  font-family: 'Comforter', cursive;
 }
